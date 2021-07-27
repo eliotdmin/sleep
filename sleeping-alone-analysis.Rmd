@@ -1,0 +1,65 @@
+---
+title: "sleeping-alone-analysis"
+author: "Eliot Min"
+date: "7/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(ggplot2)
+
+
+```
+
+
+```{r}
+
+x <- read.csv("sleeping-alone-data.csv", header=FALSE, stringsAsFactors=FALSE, fileEncoding="latin1") %>%
+  rename(
+    start_date = V1,
+    end_date = V2,
+    current_status = V3,
+    current_length = V4,
+    how_often_separate = V5,
+    if_separate_where_you = V6,
+    if_separate_where_you_other = V7,
+    if_separate_where_partner = V8,
+    if_separate_where_partner_other = V9,
+    separate_beds_snore = V10,
+    separate_beds_bathroom = V11,
+    separate_beds_sick = V12,
+    separate_beds_not_intimate = V13,
+    separate_beds_temperature = V14,
+    separate_beds_argument = V15,
+    separate_beds_space = V16,
+    separate_beds_share = V17,
+    separate_beds_child = V18,
+    separate_beds_times = V19,
+    separate_beds_other = V20,
+    first_time_separate = V21,
+    separate_helps_stay_together = V22,
+    separate_helps_sleep_better = V23,
+    separate_helps_sex_lives = V24,
+    occuptation = V25,
+    occupation_other = V26,
+    gender = V27,
+    age = V28,
+    household_income = V29,
+    education = V30,
+    location = V31
+  ) %>%
+  slice(3:1000)
+
+View(x)
+
+```
+  
+```{r}
+
+ggplot(x)
+
+```
+  

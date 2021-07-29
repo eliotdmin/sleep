@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 library(ggplot2)
+library(skimr)
 
 
 ```
@@ -56,9 +57,14 @@ x <- read.csv("sleeping-alone-data.csv", header=FALSE, stringsAsFactors=FALSE, f
   ) %>%
   slice(3:1095)
 
-View(x)
+```
+
+```{r}
+
+skim(x)
 
 ```
+
   
 ```{r}
 
@@ -68,6 +74,7 @@ x %>%
        mutate(per=round(n/sum(n), 2)) %>%
   ggplot(aes(x = education, y = per, fill = current_status)) + 
   geom_col() +
+  coord_flip() +
   theme_classic()
 
 ```
